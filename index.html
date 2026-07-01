@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>40% Price Calculator</title>
+
+<style>
+    body{
+        font-family:Arial, Helvetica, sans-serif;
+        background:#f4f4f4;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        height:100vh;
+        margin:0;
+    }
+
+    .calculator{
+        background:#fff;
+        padding:40px;
+        border-radius:12px;
+        box-shadow:0 10px 25px rgba(0,0,0,.15);
+        width:350px;
+        text-align:center;
+    }
+
+    h1{
+        color:#333;
+        margin-bottom:20px;
+    }
+
+    input{
+        width:100%;
+        padding:12px;
+        font-size:20px;
+        border:1px solid #ccc;
+        border-radius:8px;
+        margin-bottom:20px;
+        box-sizing:border-box;
+    }
+
+    .result{
+        font-size:28px;
+        color:#0b7a2d;
+        font-weight:bold;
+        margin-top:20px;
+    }
+
+    .small{
+        color:#777;
+        margin-top:10px;
+    }
+</style>
+
+</head>
+<body>
+
+<div class="calculator">
+    <h1>40% Price Calculator</h1>
+
+    <input
+        type="number"
+        id="price"
+        placeholder="Enter Price"
+        step="0.01"
+        oninput="calculate()">
+
+    <div class="result" id="result">$0.00</div>
+
+</div>
+
+<script>
+function calculate(){
+
+    let price = parseFloat(document.getElementById("price").value);
+
+    if(isNaN(price)){
+        document.getElementById("result").innerHTML="$0.00";
+        return;
+    }
+
+    let total = price * 1.40;
+
+    document.getElementById("result").innerHTML =
+        total.toLocaleString('en-US',{
+            style:'currency',
+            currency:'USD'
+        });
+}
+</script>
+
+</body>
+</html>
